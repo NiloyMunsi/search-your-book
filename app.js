@@ -13,7 +13,7 @@ searchBtn.addEventListener("click", function () {
     return;
   };
   //fetch url
-  const url = `http://openlibrary.org/search.json?q=${search}`;
+  const url = `https://openlibrary.org/search.json?q=${search}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayBooks(data.docs))
@@ -23,7 +23,6 @@ searchBtn.addEventListener("click", function () {
   
 });
 
-//add arrow function
   const displayBooks = books => {
   
   bookContainer.textContent = '';
@@ -52,24 +51,22 @@ searchBtn.addEventListener("click", function () {
         "
       >
       
-        <div class="col">
-        <div class="card h-100">
-        <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Book Name: ${book.title}</h5>
-            <p class="card-text">Author Name: ${book.author_name}</p>
-            <br>
-            <p class="card-text">Publisher: ${book.publisher}</p>
-            <br>
-            <p class="card-text">1st Publish: ${book.first_publish_year}</p>
-          </div>
+      <div class="col">
+      <div class="card h-100">
+      <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">Book Name: ${book.title}</h5>
+        <p class="card-text">Author Name: ${book.author_name}</p>
+        <br>
+        <p class="card-text">Publisher: ${book.publisher}</p>
+        <br>
+        <p class="card-text">1st Publish: ${book.first_publish_year}</p>
         </div>
+        
       </div>
+    </div>
       </div>
       `;
     bookContainer.appendChild(div);
-    
-  
-  });
-    
+  });   
 }

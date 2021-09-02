@@ -7,6 +7,7 @@ const bookContainer = document.getElementById("book-container");
 searchBtn.addEventListener("click", function () {
   const search = searchInput.value;
   bookContainer.textContent = '';
+  totalFound.textContent = '';
   //error massage
   if (search === "") {
     errorDiv.innerText = "Please enter a book name!";
@@ -16,23 +17,28 @@ searchBtn.addEventListener("click", function () {
   const url = `https://openlibrary.org/search.json?q=${search}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayBooks(data.docs))
+    .then((data) => displayBooks(data))
     
   //clear search input
   searchInput.value = '';
-  
 });
 
   const displayBooks = books => {
-  
   bookContainer.textContent = '';
   errorDiv.innerText = "";
-  if (books.length === 0) {
-    errorDiv.innerText = "Opps !No book found .";
-    return;
-  }
   
-  books.forEach(book => {
+    //found total related search
+    const totalBooks = document.createElement("h3");
+    totalBooks.innerText = `Total: ${books.numFound} books found`
+    totalFound.appendChild(totalBooks);
+
+    //show search result
+    const booksData = books.docs;
+    if (booksData.length === 0) {
+      errorDiv.innerText = "Opps !No book found .";
+      return;
+      };
+    booksData.forEach(book => {
     const div = document.createElement("div");
     div.classList.add("col-md-3");
     div.innerHTML = `

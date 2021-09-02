@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Find Books</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+</head>
+
+<body>
+  <h1 class="text-md-center">Leaders are always readers.</h1>
+  <section class="container my-2">
+    <!-- Input Box -->
+    <div class="d-flex">
+      <input
+        type="text"
+        class="form-control me-2"
+        placeholder="Enter a book name..."
+        id="searchInput"
+      />
+      <button class="btn btn-success" id="search-btn">Search</button>
+    </div>
+  </section>
+  <h2 id="totalFound" class="text-md-center"></h2>
+  <section class="container">
+    <!-- Book Details -->
+    <div class="row" id="book-details"></div>
+    <hr />
+  </section>
+  <section class="container mt-2">
+    <div id="error"></div>
+    <!-- Books -->
+    <div id="book-container" class="row">
+      
+    </div>
+  </section>
+  <script src="app.js"></script>
+</body>
+
+</html>
